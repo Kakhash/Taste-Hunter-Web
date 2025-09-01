@@ -12,6 +12,6 @@ model Order {
   items      Json
   total      Float
   status     String   @default("unpaid")
-  received   Boolean  @default(false) // ახალი ველი
   createdAt  DateTime @default(now())
+  received   Boolean  @default(false) // ✅ ეს ველი დაამატე
 }
