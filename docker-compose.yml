@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    container_name: tastehunter_web
+    restart: always
+    env_file: .env
+    ports:
+      - "3000:3000"
+  nginx:
+    image: nginx:alpine
+    container_name: tastehunter_nginx
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
