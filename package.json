@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "next build && next export -o out",
+    "build": "next build && next export --outdir out",
     "start": "next start -p 3000",
     "postinstall": "prisma generate",
     "postbuild": "prisma generate && prisma migrate deploy && next-sitemap"
