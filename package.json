@@ -6,7 +6,8 @@
     "dev": "next dev -p 3000",
     "build": "next build && next export -o out",
     "start": "next start -p 3000",
-    "postbuild": "next-sitemap"
+    "postinstall": "prisma generate",
+    "postbuild": "prisma generate && prisma migrate deploy && next-sitemap"
   },
   "dependencies": {
     "@prisma/client": "^6.14.0",
