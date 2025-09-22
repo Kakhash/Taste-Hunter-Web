@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base */
+html { scroll-behavior: smooth; }
+html, body { height: 100%; margin: 0; padding: 0; }
+
+/* Taste Hunter theme variables */
+:root {
+  --th-bg:        #faf7f5;
+  --th-card:      #ffffff;
+  --th-text:      #1f1b19;
+  --th-muted:     #6b645f;
+
+  --th-primary:   #a74232;
+  --th-primary-fg:#ffffff;
+
+  --th-accent:    #c9a44b;
+
+  --th-border:    #e9e2dd;
+
+  --th-success:   #198754;
+  --th-warn:      #b45309;
+}
+
+/* Minimal helpers (no @apply, so no PostCSS quirks) */
+@layer components {
+  .card {
+    border-radius: 1rem;           /* ~rounded-2xl */
+    border: 1px solid var(--th-border);
+    padding: 1rem;                 /* p-4 */
+    background: var(--th-card);
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;        /* ~rounded-xl */
+    padding: 0.5rem 1rem;          /* py-2 px-4 */
+    font-weight: 500;              /* font-medium */
+    transition: all .15s ease-in-out;
+  }
+
+  .btn-primary {
+    background: var(--th-primary);
+    color: var(--th-primary-fg);
+  }
+  .btn-primary:hover { opacity: .92; }
+  .btn-primary:active { transform: translateY(0.5px); }
+
+  .btn-outline {
+    border: 1px solid var(--th-border);
+    color: var(--th-text);
+    background: var(--th-card);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(167, 66, 50, 0.12); /* uses brand red at ~12% */
+    color: var(--th-primary);
+  }
+}
+
+@layer components {
+  .th-header { background: var(--th-card); border-bottom: 1px solid var(--th-border); }
+  .th-page  { background: var(--th-bg); color: var(--th-text); }
+
+  .logo-red { color: #a74232; }   /* text-logo-red equivalent */
+  .btn       { display:inline-flex; align-items:center; justify-content:center; border-radius:.75rem; padding:.5rem 1rem; font-weight:500; transition:all .15s ease; }
+  .btn-primary { background: var(--th-primary); color: var(--th-primary-fg); }
+  .btn-primary:hover { opacity:.92; }
+}
+
+@layer components {
+  /* Always visible Taste Hunter “Add to cart” button */
+  .th-add-btn {
+    @apply inline-flex items-center justify-center rounded-xl px-3 py-2 font-medium shadow;
+    @apply text-white;
+    background: var(--th-red);
+    /* defeat any group-hover/opacity/transform rules that might be hiding it */
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+}

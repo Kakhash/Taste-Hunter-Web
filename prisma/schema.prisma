@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Order {
+  id         String   @id @default(cuid())
+  items      Json
+  total      Float
+  status     String   @default("unpaid")
+  createdAt  DateTime @default(now())
+  received   Boolean  @default(false) // ✅ ეს ველი დაამატე
+}
